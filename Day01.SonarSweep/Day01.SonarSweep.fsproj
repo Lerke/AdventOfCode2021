@@ -10,6 +10,11 @@
     <Content Include="example-input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="puzzle-input.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net6.0" />
   </ItemGroup>
 
 </Project>

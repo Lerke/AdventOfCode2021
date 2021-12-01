@@ -3,10 +3,15 @@ open System.IO
 let ReadPuzzleInput file =
     file
     |> File.ReadAllLines
-    |> Array.map (int)
+    |> Array.map int
     |> Array.toList
 
-let NumberOfIncreases (input: int list) =
+let rec CreateSlidingWindows input =
+    match input with
+    | x::x1::x2::xs -> ([ x; x1; x2 ] :: CreateSlidingWindows (x1::x2::xs))
+    | _ -> []
+
+let NumberOfIncreases input =
     input
     |> List.skip 1
     |> List.zip (input |> List.rev |> List.skip 1 |> List.rev)
@@ -21,8 +26,15 @@ let main argv =
     | x when x = 1 ->
         match File.Exists(argv[0]) with
         | true ->
-            let numberOfIncreases = NumberOfIncreases (ReadPuzzleInput argv[0])
+            let input = ReadPuzzleInput argv[0]
+            let numberOfIncreases = NumberOfIncreases input
+
+            let slidingWindows = CreateSlidingWindows input
+            let sums = slidingWindows |> List.map(List.sum)
+            let numberOfIncreasesWindowed = NumberOfIncreases sums
+
             printfn $"[*] Number of increases {numberOfIncreases}"
+            printfn $"[**] Number of increased (windowed) {numberOfIncreasesWindowed}"
             0
         | _ -> failwith "File not found"
     | _ -> failwith "Usage: ./dotnet <path-to-puzzle-input>"
