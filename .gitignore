@@ -484,3 +484,5 @@ FodyWeavers.xsd
 # End of https://www.toptal.com/developers/gitignore/api/rider,fsharp,visualstudio
 
 Day01.SonarSweep/puzzle-input.txt
+
+Day02.Dive/puzzle-input.txt
