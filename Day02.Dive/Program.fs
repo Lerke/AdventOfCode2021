@@ -22,9 +22,9 @@ let CalculatePosition directions =
     directions
     |> List.fold
         (fun acc current -> match current with
-                            | Up x -> {| HorizontalPosition = acc.HorizontalPosition; Depth =  acc.Depth + x |}
-                            | Down x -> {| HorizontalPosition = acc.HorizontalPosition; Depth =  acc.Depth - x |}
-                            | Forward x -> {| HorizontalPosition = acc.HorizontalPosition + x; Depth =  acc.Depth |} ) {| HorizontalPosition = 0; Depth = 0  |}
+                            | Up x -> {| HorizontalPosition = acc.HorizontalPosition; Depth = acc.Depth; Aim = acc.Aim + x |}
+                            | Down x -> {| HorizontalPosition = acc.HorizontalPosition; Depth = acc.Depth; Aim = acc.Aim - x |}
+                            | Forward x -> {| HorizontalPosition = acc.HorizontalPosition + x; Depth = acc.Depth + (acc.Aim * x); Aim = acc.Aim |} ) {| HorizontalPosition = 0; Depth = 0; Aim = 0  |}
 
 let ReadPuzzleInput file =
     file
@@ -45,7 +45,7 @@ let main argv =
         | true ->
             let input = ReadPuzzleInput argv[0]
             let finalPosition = CalculatePosition input
-            printf $"[*] Horizontal Position: {finalPosition.HorizontalPosition}, Depth: {finalPosition.Depth}, Multiplied: {finalPosition.HorizontalPosition * finalPosition.Depth}"
+            printf $"[**]\nHorizontal Position: {finalPosition.HorizontalPosition},\nDepth: {finalPosition.Depth}\nAim: {finalPosition.Aim}\nMultiplied: {finalPosition.HorizontalPosition * finalPosition.Depth}\n"
             0
         | _ -> failwith "File not found"
     | _ -> failwith "Usage: ./dotnet <path-to-puzzle-input>"
