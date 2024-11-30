@@ -485,4 +485,4 @@ FodyWeavers.xsd
 
 Day01.SonarSweep/puzzle-input.txt
 Day02.Dive/puzzle-input.txt
-puzzle-inputs/
+puzzle-inputs/*.txt
