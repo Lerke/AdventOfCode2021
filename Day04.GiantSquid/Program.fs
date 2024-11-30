@@ -62,9 +62,9 @@ type BingoGame(boards: BingoBoard array) =
     member val private Boards = boards
 
     member private this.DrawNumber(number: int) =
-        boards |> Array.iter (_.MarkNumber(number))
+        boards |> Array.iter _.MarkNumber(number)
 
-    member private this.WinningBoards() = boards |> Array.filter (_.IsWinner())
+    member private this.WinningBoards() = boards |> Array.filter _.IsWinner()
 
     member this.FindFirstWinningBoard(draw: int array, ?performedDraw: int list) =
         let pDraw =
@@ -92,7 +92,7 @@ match Environment.GetCommandLineArgs() with
     match File.Exists(file) with
     | true ->
         let lines = File.ReadAllLines file
-        let draw = lines[0].Split(",") |> Array.map (Int32.Parse)
+        let draw = lines[0].Split(",") |> Array.map Int32.Parse
 
         let boards =
             lines
