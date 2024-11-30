@@ -85,6 +85,28 @@ type BingoGame(boards: BingoBoard array) =
                 )
         | _ -> None
 
+    member this.FindLastWinningBoard(draw: int array, ?boards: BingoBoard array, ?performedDraw: int list) =
+        let pDraw =
+            match performedDraw with
+            | Some p -> p
+            | None -> []
+
+        let remainingBoards =
+            match boards with
+            | Some b -> b
+            | None -> this.Boards
+
+        match draw with
+        | x when x.Length > 0 ->
+            this.DrawNumber(x[0])
+            
+            let remaining = remainingBoards |> Array.except (this.WinningBoards())
+            match remaining with
+            | [| |] -> Some( {| Winners = remainingBoards[0]; Draw = pDraw @ [ x[0] ] |})
+            | d -> this.FindLastWinningBoard(draw |> Array.skip 1, d, pDraw @ [ x[0] ])
+        | _ -> None
+            
+
 printfn "--- Day 04: Giant Squid ---"
 
 match Environment.GetCommandLineArgs() with
@@ -110,6 +132,13 @@ match Environment.GetCommandLineArgs() with
             | None -> 0
             
         printfn $"⭐\tFinal score:\t%A{winningSum}"
+        
+        let lastWinner= game.FindLastWinningBoard(draw)
+        let lastWinnerSum =
+            match lastWinner with
+            | Some x -> x.Winners.BoardScore() * (x.Draw |> List.last)
+            | None -> 0
+        printfn $"⭐⭐\tFinal score:\t%A{lastWinnerSum}"
 
         0
     | false -> failwithf "File not found"
