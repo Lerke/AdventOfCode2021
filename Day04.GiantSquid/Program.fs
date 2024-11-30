@@ -109,7 +109,7 @@ match Environment.GetCommandLineArgs() with
             | Some x -> x.Winners.BoardScore() * (x.Draw |> List.last)
             | None -> 0
             
-        printfn $"⭐\Final score:\t%A{winningSum}"
+        printfn $"⭐\tFinal score:\t%A{winningSum}"
 
         0
     | false -> failwithf "File not found"
