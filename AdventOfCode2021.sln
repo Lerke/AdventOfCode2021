@@ -8,6 +8,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day03.BinaryDiagnostic", "D
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day04.GiantSquid", "Day04.GiantSquid\Day04.GiantSquid.fsproj", "{D5CD4C9D-5FC5-423E-9153-EB51E8360FDD}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day05.HydrothermalVenture", "Day05.HydrothermalVenture\Day05.HydrothermalVenture.fsproj", "{B78DFA14-1379-47E9-94D6-D5EEA7E22FDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{D5CD4C9D-5FC5-423E-9153-EB51E8360FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5CD4C9D-5FC5-423E-9153-EB51E8360FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5CD4C9D-5FC5-423E-9153-EB51E8360FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B78DFA14-1379-47E9-94D6-D5EEA7E22FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B78DFA14-1379-47E9-94D6-D5EEA7E22FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B78DFA14-1379-47E9-94D6-D5EEA7E22FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B78DFA14-1379-47E9-94D6-D5EEA7E22FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
